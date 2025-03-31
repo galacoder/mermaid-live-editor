@@ -1,19 +1,14 @@
-version: '3.7'
+version: "3.7"
 
 services:
   mermaid:
-    build:
-      context: .
-      target: mermaid-dev
-
-    environment:
-      - SERVICE_FQDN_MERMAID_3000
-      - SERVICE_FQDN_MERMAID_24678
-
+    image: ghcr.io/mermaid-js/mermaid-live-editor
+    platform: linux/amd64
     ports:
-      - "3000:3000"
-      - "24678:24678"
+      - "8000:8080"
 
-    # Short syntax for a bind mount
-    volumes:
-      - "./src:/app/src"
+    # Add this environment variable if you want Coolify to generate a domain
+    # e.g. SERVICE_FQDN_MERMAID_8080 => "http://mermaid-xxxx.example.com"
+    # If you do not need a generated FQDN, you can remove it.
+    environment:
+      - SERVICE_FQDN_MERMAID_8080
