@@ -1,11 +1,11 @@
-version: '3.7'
-services:
-  mermaid:
-    build:
-      context: .
-      target: mermaid-dev
-    volumes:
-      - ./src:/app/src
-    ports:
-      - 3000:3000
-      - 24678:24678
+# Use the extended volume syntax so Coolify can manage directory creation.
+volumes:
+  - type: bind
+    source: ./src
+    target: /app/src
+    is_directory: true
+
+# If you still want these ports to be directly exposed on the host, keep them listed here.
+ports:
+  - '3000:3000'
+  - '24678:24678'
