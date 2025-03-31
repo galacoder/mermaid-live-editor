@@ -4,11 +4,7 @@ services:
   mermaid:
     image: ghcr.io/mermaid-js/mermaid-live-editor
     platform: linux/amd64
-    ports:
-      - "8000:8080"
 
-    # Add this environment variable if you want Coolify to generate a domain
-    # e.g. SERVICE_FQDN_MERMAID_8080 => "http://mermaid-xxxx.example.com"
-    # If you do not need a generated FQDN, you can remove it.
+    # No "ports:" section here, so no direct host port binding
     environment:
       - SERVICE_FQDN_MERMAID_8080
